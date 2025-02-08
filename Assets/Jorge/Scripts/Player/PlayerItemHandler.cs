@@ -7,7 +7,7 @@ public class PlayerItemHandler : MonoBehaviour
     public Transform holdPoint; // Punto donde se sujetarán los objetos
     public float detectionRadius = 3f;
     public float dropForce = 5f;
-    public int maxCarriedItems = 5; // Límite de objetos que se pueden llevar
+    public int maxCarriedItems = 10; // Límite de objetos que se pueden llevar
 
     private List<ResourceItem> carriedItems = new List<ResourceItem>(); // Lista de objetos recogidos
     private PlayerInputHandler playerInputHandler; // Referencia al script principal

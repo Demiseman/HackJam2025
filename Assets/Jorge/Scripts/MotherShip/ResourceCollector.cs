@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class ResourceCollector  : MonoBehaviour
 {
-    public SphereCollider shieldCollider;
     public Transform mothership; // Referencia a la nave nodriza
     public float baseFallSpeed = 10f; // Velocidad mínima de caída
     public float maxFallSpeed = 100f; // Velocidad máxima de caída cerca de la nave

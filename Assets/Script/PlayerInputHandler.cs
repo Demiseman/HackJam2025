@@ -86,6 +86,8 @@ public class PlayerInputHandler : MonoBehaviour
 
         if (rightStickInput.magnitude > 0.1f)
         {
+            if (!aimTarget.transform.GetChild(0).gameObject.activeSelf) aimTarget.transform.GetChild(0).gameObject.SetActive(true);
+
             Vector3 cameraForward = mainCamera.transform.forward;
             Vector3 cameraRight = mainCamera.transform.right;
 
@@ -101,6 +103,8 @@ public class PlayerInputHandler : MonoBehaviour
                 Quaternion targetRotation = Quaternion.LookRotation(aimDirection);
                 aimTarget.rotation = Quaternion.Slerp(aimTarget.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
             }
+        } else {
+            if (aimTarget.transform.GetChild(0).gameObject.activeSelf)aimTarget.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 

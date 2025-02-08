@@ -3,7 +3,12 @@ using UnityEngine;
 public class SpawnPoint : MonoBehaviour
 {
     public GameObject enemyPrefab; // Prefab del enemigo a instanciar
-    public int numberOfEnemies = 3; // Número de enemigos a spawnear
+    public int numberOfEnemies; // Número de enemigos a spawnear
+
+
+    private void Awake() {
+        numberOfEnemies = Random.Range(1, 4);
+    }
 
     private void OnTriggerEnter(Collider other)
     {

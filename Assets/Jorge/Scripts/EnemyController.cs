@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+
+    public int enemyDamage = 5;
     public float baseAcceleration = 10f; // Aceleración base del enemigo
     public float baseMaxSpeed = 20f; // Velocidad máxima base
     public float baseTurnSpeed = 120f; // Velocidad de giro base
@@ -18,7 +20,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ; // Evita inclinaciones
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionY; // Evita inclinaciones
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
 
         // Randomización leve de los parámetros para cada enemigo (±10%)
@@ -47,6 +49,13 @@ public class EnemyController : MonoBehaviour
 
         // Limitar la rotación no deseada
         rb.angularVelocity = Vector3.Lerp(rb.angularVelocity, Vector3.zero, stability * Time.fixedDeltaTime);
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if(other.gameObject.CompareTag("Shield")){
+            ShieldController.THIS.EnemyCollision(enemyDamage);
+            Destroy(gameObject);
+        }
     }
 }
 
