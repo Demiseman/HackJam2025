@@ -35,7 +35,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         mainCamera = Camera.main;
         rb = GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezePositionY;
     }
 
     void FixedUpdate()
@@ -131,7 +131,8 @@ public class PlayerInputHandler : MonoBehaviour
         }
         else
         {
-            return; // No hay dirección válida para el dash
+            // **Si no hay input, hacer Dash hacia adelante**
+            dashDirection = transform.forward;
         }
 
         rb.linearVelocity = Vector3.zero; // Evita acumulación de velocidad antes del dash
