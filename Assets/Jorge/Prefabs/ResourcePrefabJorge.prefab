@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 6987797746377312763}
   - component: {fileID: 2101235416791398889}
   - component: {fileID: 5951043788211179983}
+  - component: {fileID: -9053093200526362835}
   m_Layer: 0
-  m_Name: ResourcePrefab
+  m_Name: ResourcePrefabJorge
   m_TagString: Resource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,5 +148,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91ef1794684864f469d175e5639f88f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-9053093200526362835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7705266336046586050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c0c39376d9a8a8428bcf91d2a2f61a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
