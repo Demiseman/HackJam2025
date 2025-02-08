@@ -67,7 +67,7 @@ public class PlayerInputHandler : MonoBehaviour
             rb.linearVelocity = moveDirection * baseSpeed;
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * 10f);
-            //animator.SetBool("IsWalking", true);
+            animator.SetBool("IsWalking", true);
         }
         else
         {
