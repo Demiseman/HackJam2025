@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseAcceleration: 10
   baseMaxSpeed: 20
-  baseTurnSpeed: 120
+  baseTurnSpeed: 60
   baseStability: 2
 --- !u!54 &7275962279223986484
 Rigidbody:
