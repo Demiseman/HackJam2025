@@ -23,7 +23,7 @@ public class IsoCameraController : MonoBehaviour
         offset = transform.position - player.position; // Calcula el offset inicial
     }
 
-    void Update()
+    void LateUpdate()
     {
         if (player == null) return;
 
@@ -31,14 +31,15 @@ public class IsoCameraController : MonoBehaviour
         float distanceToMotherShip = Vector3.Distance(player.position, motherShip.position);
 
         // Ajustar la distancia de la cámara basándose en la separación
-        float distanceFactor = Mathf.Clamp01(distanceToMotherShip / maxSeparation);
+        float distanceFactor = Mathf.Pow(Mathf.Clamp01(distanceToMotherShip / maxSeparation), 0.7f);
+
         float targetDistance = Mathf.Lerp(minDistance, maxDistance, distanceFactor);
 
         // Calcular la posición deseada
         Vector3 targetPosition = player.position + offset.normalized * targetDistance;
 
         // Aplicar suavizado con SmoothDamp para evitar tirones
-        transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed /** Time.deltaTime*/);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
 
         // Asegurar que la cámara siempre mire al jugador
         transform.LookAt(player);
