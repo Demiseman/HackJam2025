@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerItemHandler : MonoBehaviour
 {
@@ -27,6 +28,24 @@ public class PlayerItemHandler : MonoBehaviour
             Drop();
         }
     }
+
+     public void OnPickUp(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            TryPickUp();
+        }
+    }
+
+    
+     public void OnDrop(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            Drop();
+        }
+    }
+
 
     void TryPickUp()
     {

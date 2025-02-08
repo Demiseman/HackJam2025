@@ -184,6 +184,8 @@ public class PlayerInputHandler : MonoBehaviour
         rightStickInput = ctx.ReadValue<Vector2>();
     }
 
+    
+
     public void OnDash(InputAction.CallbackContext ctx)
     {
         if (ctx.performed)
