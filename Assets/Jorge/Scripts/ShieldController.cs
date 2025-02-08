@@ -52,7 +52,7 @@ public class ShieldController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.Space)) ShieldTimer();
+        ShieldTimer();
         if (Input.GetKeyUp(KeyCode.Space)) shieldTime = 0f;
     }
 
