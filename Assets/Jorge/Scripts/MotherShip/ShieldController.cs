@@ -5,6 +5,10 @@ public class ShieldController : MonoBehaviour
 {
     public static ShieldController THIS;
 
+
+    public SphereCollider shipCollider;
+    public SphereCollider shieldCollider;
+
     public float shieldSize;
     public float shieldCharge;
     public float chargeLoss;
@@ -42,6 +46,8 @@ public class ShieldController : MonoBehaviour
         resourceCharge = 5;
 
         if (maxShieldCharge <= 0) maxShieldCharge = 100f; // Valor por defecto si no se asigna en el inspector
+
+        //shipCollider.radius = shieldCollider.radius;
     }
 
     void Update()
@@ -83,11 +89,12 @@ public class ShieldController : MonoBehaviour
         UpdateShieldSize(true);
     }
 
-    private void UpdateShieldSize(bool doBounce = false)
+    public void UpdateShieldSize(bool doBounce = false)
     {
         shieldSize = shieldCharge * 0.1f;
         if (sizeLerpCoroutine != null) StopCoroutine(sizeLerpCoroutine);
         sizeLerpCoroutine = StartCoroutine(AnimateShieldSize(shieldSize, doBounce));
+        //shipCollider.radius = shieldCollider.radius;
     }
 
     private IEnumerator AnimateShieldSize(float targetSize, bool doBounce)
