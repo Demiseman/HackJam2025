@@ -49,11 +49,11 @@ public class PlayerInputHandler : MonoBehaviour
         {
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * 10f);
-            animator.SetBool("IsWalking", true);
+            //animator.SetBool("IsWalking", true);
         }
         else
         {
-            animator.SetBool("IsWalking", false);
+            //animator.SetBool("IsWalking", false);
         }
     }
 
