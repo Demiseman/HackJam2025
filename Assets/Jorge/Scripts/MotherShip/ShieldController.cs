@@ -22,6 +22,8 @@ public class ShieldController : MonoBehaviour
 
     private Coroutine sizeLerpCoroutine;
 
+    private ResourceCollector resourceCollectorScript;
+
     private void Awake()
     {
         THIS = this;
@@ -74,6 +76,7 @@ public class ShieldController : MonoBehaviour
     public void EnemyCollision(int damage)
     {
         shieldCharge -= damage;
+        if(shieldCharge <= 10) resourceCollectorScript.tooLowCharge = true;
         UpdateShieldSize();
     }
 
@@ -88,8 +91,7 @@ public class ShieldController : MonoBehaviour
     {
         shieldSize = shieldCharge * 0.1f;
         if (sizeLerpCoroutine != null) StopCoroutine(sizeLerpCoroutine);
-        sizeLerpCoroutine = StartCoroutine(AnimateShieldSize(shieldSize, doBounce));
-  
+        sizeLerpCoroutine = StartCoroutine(AnimateShieldSize(shieldSize, doBounce)); 
     }
 
     private IEnumerator AnimateShieldSize(float targetSize, bool doBounce)

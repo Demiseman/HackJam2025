@@ -133,8 +133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324c8c0f517f99246950fdbc9d93e1b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyDamage: 5
   baseAcceleration: 10
-  baseMaxSpeed: 20
+  baseMaxSpeed: 45
   baseTurnSpeed: 60
   baseStability: 2
 --- !u!54 &7275962279223986484

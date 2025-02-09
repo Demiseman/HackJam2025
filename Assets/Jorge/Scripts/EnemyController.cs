@@ -5,7 +5,7 @@ public class EnemyController : MonoBehaviour
 
     public int enemyDamage = 5;
     public float baseAcceleration = 10f; // Aceleración base del enemigo
-    public float baseMaxSpeed = 20f; // Velocidad máxima base
+    public float baseMaxSpeed = 60f; // Velocidad máxima base
     public float baseTurnSpeed = 120f; // Velocidad de giro base
     public float baseStability = 2f; // Controla la resistencia a giros descontrolados
 
