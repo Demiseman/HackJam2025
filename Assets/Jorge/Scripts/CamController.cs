@@ -4,13 +4,27 @@ public class IsoCameraController : MonoBehaviour
 {
     public Transform player; // Referencia al jugador
     public Transform motherShip; // Referencia a la nave nodriza
-    public float minDistance = 20f; // Distancia mínima de la cámara
-    public float maxDistance = 80f; // Distancia máxima de la cámara
-    public float maxSeparation = 50f; // Máxima distancia del jugador a la nave para ajustar la cámara
-    public float smoothSpeed = 5f; // Tiempo de suavizado
 
-    private Vector3 velocity = Vector3.zero; // Velocidad de interpolación
+    // Distancias de cambio entre los estados (configurables en Inspector)
+    public float closeRange = 20f; // Distancia máxima para el rango cercano
+    public float midRange = 60f;   // Distancia máxima para el rango medio
+    public float maxSeparation = 100f; // Distancia máxima antes del rango lejano
+
+    // Distancias de la cámara para cada rango
+    public float closeDistance = 20f; // Distancia de la cámara cuando está cerca
+    public float midDistance = 50f;   // Distancia de la cámara en rango medio
+    public float farDistance = 80f;   // Distancia de la cámara cuando está lejos
+
+    public float smoothSpeed = 5f; // Factor de suavizado
+    public float cameraTiltAngle = 30f; // Ángulo de inclinación de la cámara
+    public float lerpDuration = 1f; // Tiempo en segundos que tarda la interpolación
+
     private Vector3 offset; // Offset inicial de la cámara
+    private float currentDistance; // Distancia actual de la cámara
+    private float lerpProgress = 0f; // Progreso del Lerp
+
+    private Vector3 lastTargetPosition; // Última posición objetivo de la cámara
+    private Quaternion lastTargetRotation; // Última rotación objetivo de la cámara
 
     void Start()
     {
@@ -21,6 +35,9 @@ public class IsoCameraController : MonoBehaviour
         }
 
         offset = transform.position - player.position; // Calcula el offset inicial
+        currentDistance = closeDistance; // Inicializa la distancia de la cámara
+        lastTargetPosition = transform.position;
+        lastTargetRotation = transform.rotation;
     }
 
     void LateUpdate()
@@ -30,18 +47,45 @@ public class IsoCameraController : MonoBehaviour
         // Distancia del jugador a la nave nodriza
         float distanceToMotherShip = Vector3.Distance(player.position, motherShip.position);
 
-        // Ajustar la distancia de la cámara basándose en la separación
-        float distanceFactor = Mathf.Pow(Mathf.Clamp01(distanceToMotherShip / maxSeparation), 0.7f);
+        // Determinar el rango actual y la distancia de la cámara
+        float targetDistance;
 
-        float targetDistance = Mathf.Lerp(minDistance, maxDistance, distanceFactor);
+        if (distanceToMotherShip <= closeRange)
+        {
+            targetDistance = closeDistance; // Rango cercano
+        }
+        else if (distanceToMotherShip <= midRange)
+        {
+            targetDistance = midDistance; // Rango medio
+        }
+        else
+        {
+            targetDistance = farDistance; // Rango lejano
+        }
 
-        // Calcular la posición deseada
-        Vector3 targetPosition = player.position + offset.normalized * targetDistance;
+        // Si cambia el objetivo, reiniciar la interpolación
+        if (Mathf.Abs(targetDistance - currentDistance) > 0.1f)
+        {
+            lerpProgress = 0f;
+        }
 
-        // Aplicar suavizado con SmoothDamp para evitar tirones
-        transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
+        // Aplicar interpolación progresiva
+        lerpProgress += Time.deltaTime / lerpDuration;
+        lerpProgress = Mathf.Clamp01(lerpProgress);
 
-        // Asegurar que la cámara siempre mire al jugador
-        transform.LookAt(player);
+        currentDistance = Mathf.Lerp(currentDistance, targetDistance, lerpProgress);
+
+        // Calcular la nueva posición de la cámara
+        Vector3 targetPosition = player.position + offset.normalized * currentDistance;
+        lastTargetPosition = Vector3.Lerp(lastTargetPosition, targetPosition, lerpProgress);
+        transform.position = lastTargetPosition;
+
+        // 🔹 Ajuste del ángulo de inclinación (picado)
+        Quaternion targetRotation = Quaternion.Euler(cameraTiltAngle, transform.eulerAngles.y, 0);
+        lastTargetRotation = Quaternion.Slerp(lastTargetRotation, targetRotation, lerpProgress);
+        transform.rotation = lastTargetRotation;
+
+        // Apuntar ligeramente hacia el jugador
+        transform.LookAt(player.position + Vector3.up * 2f);
     }
 }

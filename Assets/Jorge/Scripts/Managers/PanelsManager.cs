@@ -36,7 +36,6 @@ public class PanelsManager : MonoBehaviour
 
         float currentValue = Mathf.Clamp(newValue, 0, maxValue);
         shieldRefill.fillAmount = currentValue / maxValue; 
-        Debug.Log(currentValue/maxValue);
     }
 
     public void Update_CarriedItems(int itemsCount){

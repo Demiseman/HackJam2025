@@ -34,7 +34,7 @@ public class ShieldController : MonoBehaviour
         shieldSizeTransform = transform.GetChild(1);
 
         shieldCharge = 100f;
-        shieldSize = shieldCharge * 0.1f;
+        shieldSize = shieldCharge /** 0.1f*/;
         shieldTime = 0f;
         shieldTimeLimit = 0.5f;
         chargeLoss = 0.99f;
@@ -89,7 +89,7 @@ public class ShieldController : MonoBehaviour
 
     public void UpdateShieldSize(bool doBounce = false)
     {
-        shieldSize = shieldCharge * 0.1f;
+        shieldSize = shieldCharge /** 0.1f*/;
         if (sizeLerpCoroutine != null) StopCoroutine(sizeLerpCoroutine);
         sizeLerpCoroutine = StartCoroutine(AnimateShieldSize(shieldSize, doBounce)); 
         PanelsManager.THIS.Update_ShieldSlider(shieldCharge, maxShieldCharge);
