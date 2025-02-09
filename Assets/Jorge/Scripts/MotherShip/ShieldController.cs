@@ -16,9 +16,10 @@ public class ShieldController : MonoBehaviour
     public float maxBounceMultiplier = 1.2f; // 1.2 significa 120% del tamaño final
     public float bounceSpeed = 2.0f; // Controla la velocidad del rebote
 
-    private Transform shieldSizeTransform;
+    public Transform shieldSizeTransform;
     private int enemyDamage;
     private int resourceCharge;
+
 
     private Coroutine sizeLerpCoroutine;
 
@@ -31,7 +32,6 @@ public class ShieldController : MonoBehaviour
 
     void Start()
     {
-        shieldSizeTransform = transform.GetChild(1);
 
         shieldCharge = 100f;
         shieldSize = shieldCharge /** 0.1f*/;

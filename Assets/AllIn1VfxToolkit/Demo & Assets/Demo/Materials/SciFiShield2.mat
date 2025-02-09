@@ -164,7 +164,7 @@ Material:
     - _RenderingMode: 5
     - _RimAddAmount: 1
     - _RimBias: 0
-    - _RimErodesAlpha: 0
+    - _RimErodesAlpha: 1.86
     - _RimIntensity: 1
     - _RimPower: 3.5
     - _RimScale: 1.2
@@ -251,6 +251,6 @@ Material:
     - _RimColor: {r: 1, g: 0, b: 0, a: 1}
     - _Shape2Color: {r: 1, g: 1, b: 1, a: 1}
     - _Shape3Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ShapeColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ShapeColor: {r: 1, g: 1, b: 1, a: 0.3882353}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
