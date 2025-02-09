@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyController : MonoBehaviour
 {
@@ -55,6 +56,10 @@ public class EnemyController : MonoBehaviour
         if(other.gameObject.CompareTag("Shield")){
             ShieldController.THIS.EnemyCollision(enemyDamage);
             Destroy(gameObject);
+        }
+
+        if(other.gameObject.CompareTag("Player")){
+            SceneManager.LoadScene(2);
         }
     }
 }
