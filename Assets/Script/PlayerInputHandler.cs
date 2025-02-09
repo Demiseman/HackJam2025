@@ -10,8 +10,11 @@ public class PlayerInputHandler : MonoBehaviour
     public float minSpeed = 3f;
     public int peso = 0;
     private Vector2 movementInput;
+
+    public GameObject Meteor;
+
     private Vector3 moveDirection;
-    
+
     [Header("Dash / Rush")]
     public float dashForce = 20f;  // Intensidad del Dash
     public float dashCooldown = 1f; // Tiempo entre dashes
@@ -23,7 +26,7 @@ public class PlayerInputHandler : MonoBehaviour
     public Transform aimTarget; // GameObject que rotará con el Right Stick
     public float rotationSpeed = 10f;
     private Vector2 rightStickInput;
-    
+
     private Camera mainCamera;
     public Animator animator;
     private Rigidbody rb;
@@ -103,17 +106,21 @@ public class PlayerInputHandler : MonoBehaviour
                 Quaternion targetRotation = Quaternion.LookRotation(aimDirection);
                 aimTarget.rotation = Quaternion.Slerp(aimTarget.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
             }
-        } else {
-            if (aimTarget.transform.GetChild(0).gameObject.activeSelf)aimTarget.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        else
+        {
+            if (aimTarget.transform.GetChild(0).gameObject.activeSelf) aimTarget.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
-
     private void Dash()
     {
         if (!canDash) return;
 
         canDash = false;
         isDashing = true;
+        gameObject.tag = "PlayerForce"; // Cambia el tag al iniciar el dash
+        Meteor.SetActive(true);
+
         Vector3 dashDirection;
 
         // **Prioridad del Right Stick**
@@ -141,13 +148,27 @@ public class PlayerInputHandler : MonoBehaviour
 
         rb.linearVelocity = Vector3.zero; // Evita acumulación de velocidad antes del dash
         rb.AddForce(dashDirection * dashForce, ForceMode.Impulse);
-        Debug.Log("DASH ACTIVADO");
+        Debug.Log("DASH ACTIVADO - Tag cambiado a PlayerForce");
 
         // Bloquear inputs durante `dashLockTime`
         Invoke(nameof(EndDashLock), dashLockTime);
 
         // Reset del dash después del cooldown
         Invoke(nameof(ResetDash), dashCooldown);
+
+        // Restaurar el tag después del tiempo de dashLockTime
+        Invoke(nameof(ResetPlayerTag), dashLockTime);
+    }
+
+    /// <summary>
+    /// Restaura el tag del Player después del Dash.
+    /// </summary>
+    private void ResetPlayerTag()
+    {
+        gameObject.tag = "Player";
+        Debug.Log("DASH FINALIZADO - Tag restaurado a Player");
+        Meteor.SetActive(false);
+
     }
 
     private void EndDashLock()
@@ -188,7 +209,7 @@ public class PlayerInputHandler : MonoBehaviour
         rightStickInput = ctx.ReadValue<Vector2>();
     }
 
-    
+
 
     public void OnDash(InputAction.CallbackContext ctx)
     {

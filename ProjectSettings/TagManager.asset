@@ -8,6 +8,7 @@ TagManager:
   - Shield
   - MotherShip
   - Resource
+  - PlayerForce
   layers:
   - Default
   - TransparentFX
