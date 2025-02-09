@@ -22,6 +22,11 @@ public class PlayerInputHandler : MonoBehaviour
     private bool canDash = true;
     private bool isDashing = false;
 
+    private bool isAiming = false;
+    public Transform meteorTransform;
+
+
+
     [Header("Apuntado con Right Stick")]
     public Transform aimTarget; // GameObject que rotará con el Right Stick
     public float rotationSpeed = 10f;
@@ -51,6 +56,13 @@ public class PlayerInputHandler : MonoBehaviour
         }
 
         RotateAimTarget();
+
+        if (!isAiming) // Solo sigue el frente del Player si no está apuntando manualmente
+        {
+            meteorTransform.forward = transform.forward;
+        }
+
+
     }
 
     private void MovePlayer()
@@ -105,6 +117,8 @@ public class PlayerInputHandler : MonoBehaviour
             {
                 Quaternion targetRotation = Quaternion.LookRotation(aimDirection);
                 aimTarget.rotation = Quaternion.Slerp(aimTarget.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
+                isAiming = true;
+                meteorTransform.forward = aimDirection.normalized;
             }
         }
         else
@@ -112,13 +126,18 @@ public class PlayerInputHandler : MonoBehaviour
             if (aimTarget.transform.GetChild(0).gameObject.activeSelf) aimTarget.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
+
+    private void EndAiming()
+    {
+        isAiming = false;
+    }
+
     private void Dash()
     {
         if (!canDash) return;
 
         canDash = false;
         isDashing = true;
-        gameObject.tag = "PlayerForce"; // Cambia el tag al iniciar el dash
         Meteor.SetActive(true);
 
         Vector3 dashDirection;
@@ -165,7 +184,6 @@ public class PlayerInputHandler : MonoBehaviour
     /// </summary>
     private void ResetPlayerTag()
     {
-        gameObject.tag = "Player";
         Debug.Log("DASH FINALIZADO - Tag restaurado a Player");
         Meteor.SetActive(false);
 

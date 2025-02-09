@@ -3349,6 +3349,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4786891846842683709, guid: 27fb5c3c74effbe4a868c97543b09d94, type: 3}
   m_PrefabInstance: {fileID: 633235895}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &813075302 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1575922702115514040, guid: a1a284e1837b5b44eb1dd672ad3c7f3d, type: 3}
+  m_PrefabInstance: {fileID: 1800268471}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &813133259
 GameObject:
   m_ObjectHideFlags: 0
@@ -8252,6 +8257,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8365230262254133063, guid: a1a284e1837b5b44eb1dd672ad3c7f3d, type: 3}
+      propertyPath: meteorTransform
+      value: 
+      objectReference: {fileID: 813075302}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
