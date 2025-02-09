@@ -5449,10 +5449,66 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6410621723253645584, guid: 5b8df26b3905ade4ba332ba1d1772138, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a0868dcf41b52bf42ab8971ef8672f02, type: 2}
+    - target: {fileID: -4769185101720422513, guid: 5b8df26b3905ade4ba332ba1d1772138, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f476c6e39ddbdbe41ab4c162ff4e31f9, type: 2}
+    - target: {fileID: -2098708221688870049, guid: 5b8df26b3905ade4ba332ba1d1772138, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a0868dcf41b52bf42ab8971ef8672f02, type: 2}
+    - target: {fileID: -1262244743251020246, guid: 5b8df26b3905ade4ba332ba1d1772138, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 245edfe3ded54db4aada3a1b023da87b, type: 2}
+    - target: {fileID: 31022536103126191, guid: 5b8df26b3905ade4ba332ba1d1772138, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f476c6e39ddbdbe41ab4c162ff4e31f9, type: 2}
     - target: {fileID: 919132149155446097, guid: 5b8df26b3905ade4ba332ba1d1772138, type: 3}
       propertyPath: m_Name
       value: SpaceShip01
       objectReference: {fileID: 0}
+    - target: {fileID: 2419115429262768341, guid: 5b8df26b3905ade4ba332ba1d1772138, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a0868dcf41b52bf42ab8971ef8672f02, type: 2}
+    - target: {fileID: 2787080898262059034, guid: 5b8df26b3905ade4ba332ba1d1772138, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7079d7923e3e54741848828ca98e3c55, type: 2}
+    - target: {fileID: 3212626013011770894, guid: 5b8df26b3905ade4ba332ba1d1772138, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 245edfe3ded54db4aada3a1b023da87b, type: 2}
+    - target: {fileID: 3685008361749654017, guid: 5b8df26b3905ade4ba332ba1d1772138, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7079d7923e3e54741848828ca98e3c55, type: 2}
+    - target: {fileID: 5153478020227613165, guid: 5b8df26b3905ade4ba332ba1d1772138, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f476c6e39ddbdbe41ab4c162ff4e31f9, type: 2}
+    - target: {fileID: 6664242715313365294, guid: 5b8df26b3905ade4ba332ba1d1772138, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7079d7923e3e54741848828ca98e3c55, type: 2}
+    - target: {fileID: 7869043324961194268, guid: 5b8df26b3905ade4ba332ba1d1772138, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2d22d6acbca46754f8549a0a8fe764ae, type: 2}
+    - target: {fileID: 8291092232446037953, guid: 5b8df26b3905ade4ba332ba1d1772138, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a0868dcf41b52bf42ab8971ef8672f02, type: 2}
+    - target: {fileID: 9173123289748136865, guid: 5b8df26b3905ade4ba332ba1d1772138, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 245edfe3ded54db4aada3a1b023da87b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

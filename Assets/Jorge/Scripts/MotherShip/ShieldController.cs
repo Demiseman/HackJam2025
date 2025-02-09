@@ -36,7 +36,7 @@ public class ShieldController : MonoBehaviour
         shieldCharge = 100f;
         shieldSize = shieldCharge /** 0.1f*/;
         shieldTime = 0f;
-        shieldTimeLimit = 0.5f;
+        shieldTimeLimit = 0.75f;
         chargeLoss = 0.99f;
         shieldSizeTransform.localScale = Vector3.one * shieldSize;
 
