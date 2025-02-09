@@ -58,6 +58,7 @@ public class PlayerItemHandler : MonoBehaviour
             if (resource != null && !carriedItems.Contains(resource))
             {
                 carriedItems.Add(resource);
+                PanelsManager.THIS.Update_CarriedItems(carriedItems.Count);
                 resource.PickUp(GetNextHoldPoint());
                 playerInputHandler.AddWeight(resource.GetWeight()); // 🏋️‍♂️ Añadir peso
                 break;
@@ -71,6 +72,7 @@ public class PlayerItemHandler : MonoBehaviour
 
         ResourceItem itemToDrop = carriedItems[carriedItems.Count - 1]; // Suelta el último recogido
         carriedItems.RemoveAt(carriedItems.Count - 1);
+        PanelsManager.THIS.Update_CarriedItems(carriedItems.Count);
         playerInputHandler.ReduceWeight(itemToDrop.GetWeight()); // 🏋️‍♂️ Reducir peso
         itemToDrop.Drop(transform.forward * dropForce);
     }

@@ -92,6 +92,7 @@ public class ShieldController : MonoBehaviour
         shieldSize = shieldCharge * 0.1f;
         if (sizeLerpCoroutine != null) StopCoroutine(sizeLerpCoroutine);
         sizeLerpCoroutine = StartCoroutine(AnimateShieldSize(shieldSize, doBounce)); 
+        PanelsManager.THIS.Update_ShieldSlider(shieldCharge, maxShieldCharge);
     }
 
     private IEnumerator AnimateShieldSize(float targetSize, bool doBounce)
